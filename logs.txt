@@ -1,0 +1,44 @@
+Terminal input:
+$ python NeuralFM.py --dataset movieLens --hidden_factor 64 --layers [64] --keep_prob [0.8,0.5] --loss_type square_loss --activation relu --pretrain 0 --optimizer AdagradOptimizer --lr 0.05 --batch_norm 1 --verbose 1 --early_stop 1 --epoch 10
+
+Terminal output:
+('# of training:', 8000043)
+('# of validation:', 1000005)
+('# of test:', 1000006)
+Neural FM: dataset=movieLens, hidden_factor=64, dropout_keep=[0.8,0.5], layers=[64], loss_type=square_loss, pretrain=0, #epoch=10, batch=128, lr=0.0500, lambda=0.0000, optimizer=AdagradOptimizer, batch_norm=1, activation=relu, early_stop=1
+WARNING:tensorflow:From /home/biddy/Downloads/KAIST Graduation/NFM/venv/local/lib/python2.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From NeuralFM.py:124: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+WARNING:tensorflow:From NeuralFM.py:136: calling reduce_sum_v1 (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /home/biddy/Downloads/KAIST Graduation/NFM/venv/local/lib/python2.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-05-30 10:34:45.029616: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-05-30 10:34:45.245203: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2400000000 Hz
+2019-05-30 10:34:45.249511: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0xb9092e40 executing computations on platform Host. Devices:
+2019-05-30 10:34:45.249695: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-05-30 10:34:45.451243: W tensorflow/core/framework/allocator.cc:124] Allocation of 22316288 exceeds 10% of system memory.
+2019-05-30 10:34:45.502439: W tensorflow/core/framework/allocator.cc:124] Allocation of 22316288 exceeds 10% of system memory.
+2019-05-30 10:34:45.527047: W tensorflow/core/framework/allocator.cc:124] Allocation of 22316288 exceeds 10% of system memory.
+2019-05-30 10:34:45.537928: W tensorflow/core/framework/allocator.cc:124] Allocation of 22316288 exceeds 10% of system memory.
+2019-05-30 10:34:45.683852: W tensorflow/core/framework/allocator.cc:124] Allocation of 22316288 exceeds 10% of system memory.
+#params: 5670470
+Traceback (most recent call last):
+  File "NeuralFM.py", line 350, in <module>
+    model.train(data.Train_data, data.Validation_data, data.Test_data)
+  File "NeuralFM.py", line 266, in train
+    init_train = self.evaluate(Train_data)
+  File "NeuralFM.py", line 311, in evaluate
+    predictions = self.sess.run((self.out), feed_dict=feed_dict)
+  File "/home/biddy/Downloads/KAIST Graduation/NFM/venv/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 929, in run
+    run_metadata_ptr)
+  File "/home/biddy/Downloads/KAIST Graduation/NFM/venv/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1121, in _run
+    np_val = np.asarray(subfeed_val, dtype=subfeed_dtype)
+  File "/home/biddy/Downloads/KAIST Graduation/NFM/venv/local/lib/python2.7/site-packages/numpy/core/numeric.py", line 538, in asarray
+    return array(a, dtype, copy=False, order=order)
+ValueError: setting an array element with a sequence.
